@@ -5,7 +5,7 @@ username varchar(20) unique not null,
 password varchar(20) not Null
 );
 
-CREATE TABLE Chore(
+CREATE TABLE CHORE(
 id SERIAL PRIMARY KEY,
 useeer_id INTEGER REFERENCES Useeer(user_id),
 name varchar(20) not null,
@@ -15,7 +15,7 @@ deadline DATE,
 done boolean DEFAULT false
 );
 
-CREATE TABLE Label(
+CREATE TABLE LABEL(
 id SERIAL PRIMARY KEY,
 useeer_id INTEGER REFERENCES Useeer(user_id),
 name varchar(20) not null,

@@ -9,10 +9,10 @@
  public static function suunnitelmat_index(){
    	  View::make('suunnitelmat/homepage.html');
     }
-    public static function chore_list(){
+    public static function chorelist(){
    	  View::make('suunnitelmat/muistilista.html');
     }
-   public static function chore_edit(){
+   public static function edit_chore(){
    	  View::make('suunnitelmat/edit.html');
     }
 	

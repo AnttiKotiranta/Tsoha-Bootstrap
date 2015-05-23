@@ -2,11 +2,15 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
+* [Linkki sovellukseeni]()Coming soon... HUOM! Sovellus ei tuntemattomasta syystä näy vielä palvelimella!
+   -> http://ajkotira.users.cs.helsinki.fi/tsoha/suunnitelmat
+   -> http://ajkotira.users.cs.helsinki.fi/tsoha/suunnitelmat/list
+   -> http://ajkotira.users.cs.helsinki.fi/tsoha/suunnitelmat/list/edit
+
 * [Linkki dokumentaatiooni](https://github.com/AnttiKotiranta/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
-Perustuu: [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html) 
+[Perustuu valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html) 
 
 </h2>What is Memoryz?</h2>
 As now days people have so many things to remember, Memoryz website is here to help working class Joe, business manager Bill, stay-a-home mother Martha, student Sandy, stock-market Stud, homeless Hank, Jeff and everyone to help them remember their important  matters. The idea behind Memoryz is that users can create their own table of things needed to be done, class them, rate their priority, rank them in different order and of course mark them as done. 
