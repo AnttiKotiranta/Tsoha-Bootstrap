@@ -25,6 +25,14 @@ class ChoreController extends BaseController{
 
  }
 
+ public static function view($id){
+  //lisätään kun edit.html sivu on tehty, eli sovelluksessa ei ole erillistä choren näyttösivua vaan pelkästään edit sivu. 
+  //$game = Chore::find($id)
+  //View:make('chore/edit.html', array('chore' => $chore));
+ }
+
+
+
 
 
 

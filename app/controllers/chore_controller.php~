@@ -19,11 +19,19 @@ class ChoreController extends BaseController{
     Kint::dump($params);
     $chore->save();
 
-    Redirect::to('/chore/' . $chore->id, array('message' => 'Chore added!'));
+    //Redirect::to('/chore/' . $chore->id, array('message' => 'Chore added!'));
   }
 
 
  }
+
+ public static function view($id){
+  //lisätään kun edit.html sivu on tehty
+  //$game = Chore::find($id)
+  //View:make('chore/edit.html', array('chore' => $chore));
+ }
+
+
 
 
 

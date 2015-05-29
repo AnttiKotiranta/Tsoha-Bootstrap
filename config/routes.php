@@ -24,7 +24,7 @@
   });
 
  $routes->get('/chore/:id', function($id) {
-    ChoreController::show($id);
+    ChoreController::view($id);
   });
 
  $routes->post('/chore', function() {
