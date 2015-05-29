@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>My Memoryz</h1>
+
+  <h2>Add chore</h2>
+ <form method="post" action="{{base_path}}/chore">
+    <div class="form-group">
+      <label>Name</label>
+      <input name="name" class="form-control" type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Priority</label>
+      <input name="priority" class="form-control" type="number">
+    </div>
+
+    <div class="form-group">
+      <label>Deadline</label>
+      <input name="deadline" class="form-control" type="date">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea name="description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Labels (will added later)</label>
+      <input name="label" class="form-control" type="date">
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+  </form>
+<br>
+
+<h2>My chores</h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Chore</th>
+	<th>Priority</th>
+	<th>Deadline</th
+        <th>Description</th>
+        <th>Labels</th>
+	<th>Done?</th>
+	<th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+	 {% for chore in chores %}
+      <tr>
+        <td>{{chore.name}}</td>
+	<td><div class="btn-group">
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+		    priority <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu">
+		    <li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		  </ul>
+	    </div>
+	</td>
+	 <td>{{chore.deadline}}</td>
+        <td>{{chore.description}}</td>
+        <td>< a href=#>School stuff</a></td>
+        <td><type="checkbox" aria-label="Done?"></label></td>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/chore/{{game.id}}">Edit</a></th>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

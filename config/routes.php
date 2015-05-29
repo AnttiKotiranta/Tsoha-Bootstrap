@@ -18,5 +18,22 @@
     HelloWorldController::chore_edit();
   });
 
+//chores
+ $routes->get('/chore', function() {
+    ChoreController::index();
+  });
+
+ $routes->get('/chore/:id', function($id) {
+    ChoreController::show($id);
+  });
+
+ $routes->post('/chore', function() {
+    ChoreController::store();
+  });
+
+
+
+
+
 
   
