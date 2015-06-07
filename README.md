@@ -2,10 +2,8 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni]()Coming soon... HUOM! Sovellus ei tuntemattomasta syystä näy vielä palvelimella vaikka pitäisi!
-   -> http://ajkotira.users.cs.helsinki.fi/tsoha/suunnitelmat
-   -> http://ajkotira.users.cs.helsinki.fi/tsoha/suunnitelmat/list
-   -> http://ajkotira.users.cs.helsinki.fi/tsoha/suunnitelmat/list/edit
+* [Linkki sovellukseeni](http://ajkotira.users.cs.helsinki.fi/tsoha/)
+Username = Testi2 | Password = Testi123
 
 * [Linkki dokumentaatiooni](https://github.com/AnttiKotiranta/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 

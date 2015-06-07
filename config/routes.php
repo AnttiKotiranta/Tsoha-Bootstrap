@@ -1,34 +1,44 @@
 <?php
-
+//Homepage and user stuff:
   $routes->get('/', function() {
-    HelloWorldController::index();
+    HomeController::index();
+  });
+
+  $routes->post('/login', function(){
+    HomeController::login();
   });
 
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
   });
 
-  $routes->get('/suunnitelmat', function() {
-    HelloWorldController::suunnitelmat_index();
-  });
-  $routes->get('/suunnitelmat/list', function() {
-    HelloWorldController::chore_list();
-  });
-  $routes->get('/suunnitelmat/list/edit', function() {
-    HelloWorldController::chore_edit();
-  });
-
 //chores
- $routes->get('/chore', function() {
+ $routes->get('/chores', function() {
     ChoreController::index();
   });
+ $routes->get('/chores/', function() {
+    ChoreController::index();
+  });
+
 
  $routes->get('/chore/:id', function($id) {
     ChoreController::view($id);
   });
 
- $routes->post('/chore', function() {
+ $routes->post('/chores/new', function() {
     ChoreController::store();
+  });
+
+ $routes->get('/chores/:id/edit', function($id) {
+	ChoreController::edit($id);
+  });
+
+ $routes->post('/chores/:id/update', function($id) {
+	ChoreController::update($id);
+  });
+
+ $routes->post('/chores/:id/destroy', function($id) {
+	ChoreController::destroy($id);
   });
 
 

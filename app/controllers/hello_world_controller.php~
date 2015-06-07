@@ -9,16 +9,23 @@
  public static function suunnitelmat_index(){
    	  View::make('suunnitelmat/homepage.html');
     }
-    public static function chorelist(){
+    public static function chore_list(){
    	  View::make('suunnitelmat/muistilista.html');
     }
-   public static function edit_chore(){
+   public static function chore_edit(){
    	  View::make('suunnitelmat/edit.html');
     }
 	
 
-    public static function sandbox(){
-      // Testaa koodiasi täällä
-      echo 'Hello World!';
+   public static function sandbox(){
+       $chore = new Chore(array(
+    'name' => '',
+    'priority' => '100',
+    'deadline' => '2015/8/8',
+    'description' => 'Boom, boom!'
+  ));
+  $errors = $chore->errors();
+
+  Kint::dump($errors);
     }
   }

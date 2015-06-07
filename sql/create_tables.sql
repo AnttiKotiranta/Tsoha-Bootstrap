@@ -8,10 +8,10 @@ password varchar(20) not Null
 CREATE TABLE Chore(
 id SERIAL PRIMARY KEY,
 useeer_id INTEGER REFERENCES Useeer(user_id),
-name varchar(20) not null,
-description varchar(70),
+name varchar(40) not null,
+description varchar(100),
 priority integer DEFAULT 1,
-deadline DATE,
+deadline DATE DEFAULT null,
 done boolean DEFAULT false
 );
 
