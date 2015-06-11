@@ -3,7 +3,7 @@
 class Useeer extends BaseModel{
 
  public $user_id, $username;
- private $password;
+ public $pass;
 
   public function __construct($attributes){
     //$v = new Valitron\Validator($attributes);
@@ -15,16 +15,16 @@ class Useeer extends BaseModel{
     //$this->validators = $v->errors();
   }
 
- public static function authenticate($username, $password){
+ public static function authenticate($username, $pass){
    
-   $query = DB::connection()->prepare('SELECT * FROM Useeer WHERE username = :username AND password = :password LIMIT 1'); 
-   $query->execute(array('username' => $username, 'password' => $password));
+   $query = DB::connection()->prepare('SELECT * FROM Useeer WHERE username = :username AND pass = :pass LIMIT 1'); 
+   $query->execute(array('username' => $username, 'pass' => $pass));
    $row = $query->fetch();
    if($row){
 	$user = new Useeer(array(
 		'user_id' => $row['user_id'],
-		'$username' => $row['username'],
-		'$password' => $row['password']
+		'username' => $row['username'],
+		'pass' => $row['pass']
 		));
   	return $user;
    }else{
@@ -32,15 +32,16 @@ class Useeer extends BaseModel{
     }
  }
 
- public static function find($id){
-    $query = DB::connection()->prepare('SELECT * FROM Useeer WHERE user_id = :id LIMIT 1');
-    $query->execute(array('id' => $id));
+ public static function find($user_id){
+    $query = DB::connection()->prepare('SELECT * FROM Useeer WHERE user_id = :user_id LIMIT 1');
+    $query->execute(array('user_id' => $user_id));
     $row = $query->fetch();
 
     if($row){
 	$user = new Useeer(array(
-		'$username' => $row['username'],
-		'$password' => $row['password']
+	    'user_id' => $row['user_id'],
+		'username' => $row['username'],
+		'pass' => $row['pass']
 		));
 	return $user;
     }
@@ -48,8 +49,8 @@ class Useeer extends BaseModel{
  }
 
   public function save(){
-    $query = DB::connection()->prepare('INSERT INTO Useeer (username, password) VALUES (:username, :password) RETURNING id');
-    $query->execute(array('username' => $this->username, 'password' => $this->password));
+    $query = DB::connection()->prepare('INSERT INTO Useeer (username, pass) VALUES (:username, :pass) RETURNING id');
+    $query->execute(array('username' => $this->username, 'pass' => $this->pass));
     $row = $query->fetch();
     $this->id = $row['id'];
   }

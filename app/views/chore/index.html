@@ -50,8 +50,8 @@
 	 <td>{{chore.deadline}}</td>
         <td>{{chore.description}}</td>
         <td>< a href=#>School stuff</a></td>
-        <td><type="checkbox" aria-label="Done?"></label></td>
-        <th><a class="btn btn-default btn-sm" href="{{base_path}}/chore/{{chore.id}}/edit">Edit</a></th>
+        <td>{{chore.done}}</td>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/chores/{{chore.id}}/edit">Edit</a></th>
       </tr>
      {%endfor%}
     </tbody>

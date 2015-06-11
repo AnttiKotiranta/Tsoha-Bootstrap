@@ -5,8 +5,11 @@
     public static function get_user_logged_in(){
 
     if(isset($_SESSION['user'])){
+		Kint::dump($_SESSION);
+		
       $user_id = $_SESSION['user'];
       $user = Useeer::find($user_id);
+      Kint::dump($user);
       return $user;
     }
 

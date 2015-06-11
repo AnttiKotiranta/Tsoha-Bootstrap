@@ -23,32 +23,32 @@ class Chore extends BaseModel{
 
     foreach($rows as $row){
       $chores[] = new Chore(array(
-		'$id' => $row['id'],
-		'$useeer_id' => $row['useeer_id'],
-		'$name'  => $row['name'],
-		'$description' => $row['description'],
-		'$priority' => $row['priority'],
-		'$done' => $row['done'],
-		'$deadline' => $row['deadline']
+		'id' => $row['id'],
+		'useeer_id' => $row['useeer_id'],
+		'name'  => $row['name'],
+		'description' => $row['description'],
+		'priority' => $row['priority'],
+		'done' => $row['done'],
+		'deadline' => $row['deadline']
 		));
     }
     return $chores;
   }
 
-  public static function find($id){
+  public static function find($id, $user){
     $query = DB::connection()->prepare('SELECT * FROM Chore WHERE id = :id AND useeer_id = :useeer_id LIMIT 1');
-    $query->execute(array('id' => $id));
+    $query->execute(array('id' => $id, 'useeer_id' => $user->user_id));
     $row = $query->fetch();
 
     if($row){
 	$chore = new Chore(array(
-		'$id' => $row['id'],
-		'$useeer_id' => $row['useeer_id'],
-		'$name'  => $row['name'],
-		'$description' => $row['description'],
-		'$priority' => $row['priority'],
-		'$done' => $row['done'],
-		'$deadline' => $row['deadline']
+		'id' => $row['id'],
+		'useeer_id' => $row['useeer_id'],
+		'name'  => $row['name'],
+		'description' => $row['description'],
+		'priority' => $row['priority'],
+		'done' => $row['done'],
+		'deadline' => $row['deadline']
 		));
 	return $chore;
     }
@@ -57,6 +57,9 @@ class Chore extends BaseModel{
   
   public function save(){
     $query = DB::connection()->prepare('INSERT INTO Chore (useeer_id, name, priority, deadline, description) VALUES (:useeer_id, :name, :priority, :deadline, :description) RETURNING id');
+    if($this->deadline == ""){
+		$this->deadline = null;
+	}	
     $query->execute(array('useeer_id' => $this->useeer_id, 'name' => $this->name, 'priority' => $this->priority, 'deadline' => $this->deadline, 'description' => $this->description));
     $row = $query->fetch();
 
@@ -68,7 +71,7 @@ class Chore extends BaseModel{
 
   public function update(){
     $query = DB::connection()->prepare('UPDATE Chore SET name = :name, priority = :priority, deadline = :deadline, description = :description, done = :done WHERE id = :id');
-    $query->execute(array('id' => $this.id,  'name' => $this->name, 'priority' => $this->priority, 'deadline' => $this->deadline, 'description' => $this->description, 'done' => $this.done));
+    $query->execute(array('id' => $this->id,  'name' => $this->name, 'priority' => $this->priority, 'deadline' => $this->deadline, 'description' => $this->description, 'done' => $this->done));
     $row = $query->fetch();
 
     //Kint::trace();   
@@ -78,8 +81,8 @@ class Chore extends BaseModel{
 
   public function destroy(){
     $query = DB::connection()->prepare('DELETE FROM Chore WHERE id = :id');
-    $query->execute(array('id' => $this.id));
-    //$row = $query->fetch();
+    $query->execute(array('id' => $this->id));
+    
 
   }
 

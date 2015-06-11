@@ -21,6 +21,8 @@
   });
 
 
+
+
  $routes->get('/chore/:id', function($id) {
     ChoreController::view($id);
   });
@@ -33,7 +35,7 @@
 	ChoreController::edit($id);
   });
 
- $routes->post('/chores/:id/update', function($id) {
+ $routes->post('/chores/:id/edit', function($id) {
 	ChoreController::update($id);
   });
 

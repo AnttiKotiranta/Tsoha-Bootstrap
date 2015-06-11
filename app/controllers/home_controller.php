@@ -9,8 +9,9 @@ class HomeController extends BaseController{
 
   public static function login(){
     $params = $_POST;
-
+	Kint::dump($_POST);
     $user = Useeer::authenticate($params['username'], $params['password']);
+    Kint::dump($user);
 
     if(!$user){
       View::make('home.html', array('error' => 'Wrong password or username!', 'username' => $params['username']));

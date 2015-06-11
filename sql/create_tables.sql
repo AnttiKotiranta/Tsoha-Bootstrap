@@ -2,7 +2,7 @@
 CREATE TABLE Useeer(
 user_id SERIAL PRIMARY KEY,
 username varchar(20) unique not null,
-password varchar(20) not Null
+pass varchar(20) not Null
 );
 
 CREATE TABLE Chore(
