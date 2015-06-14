@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "macros/label_macros.html" as label_macro %}
+
+<h1>Labels</h1>
+
+<div class="row">
+ <div class="col-md-6">
+  <h2>Labels?</h2>
+  <p> Labels are used to define and distinguish chores to groups, like i.e. "Home chores". You can add a new label just by filling the form on the left and view them below.</p>
+ </div>
+ <div class="col-md-6">
+ <h2>Add Label</h2>
+  {% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+ {{label_macro.add_label_form()}}
+ </div>
+</div>
+
+<h2>My labels</h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Label</th>
+        <th>Description</th>
+	<th>Chores</th>
+	<th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+	 {% for label in labels %}
+      <tr>
+        <td><a href="{{base_path}}/labels/{{label.id}}/view">{{label.name}}</a></td>
+        <td>{{label.description}}</td>
+        <td>chores</a></td>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/labels/{{label.id}}/view">View</a></th>
+      </tr>
+     {%endfor%}
+    </tbody>
+  </table>
+
+{% endblock %}

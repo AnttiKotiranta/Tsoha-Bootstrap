@@ -18,12 +18,12 @@ done boolean DEFAULT false
 CREATE TABLE Label(
 id SERIAL PRIMARY KEY,
 useeer_id INTEGER REFERENCES Useeer(user_id),
-name varchar(20) not null,
+name varchar(40) not null,
 description varchar(70)
 );
 
 CREATE TABLE LabelChores(
-chore_id INTEGER REFERENCES Chore(id),
-label_id INTEGER REFERENCES Label(id),
+chore_id INTEGER REFERENCES Chore(id) ON DELETE CASCADE ON UPDATE CASCADE,
+label_id INTEGER REFERENCES Label(id) ON DELETE CASCADE ON UPDATE CASCADE,
 PRIMARY KEY (chore_id, label_id)
 );

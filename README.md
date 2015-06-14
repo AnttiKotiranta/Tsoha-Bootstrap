@@ -1,13 +1,11 @@
-# Tietokantasovelluksen esittelysivu
+# Memoryz
 
-Yleisiä linkkejä:
-
-* [Linkki sovellukseeni](http://ajkotira.users.cs.helsinki.fi/tsoha/)
+* [Link](http://ajkotira.users.cs.helsinki.fi/tsoha/)
 Username = Testi2 | Password = Testi123
 
-* [Linkki dokumentaatiooni](https://github.com/AnttiKotiranta/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
+* [Link to documentation](https://github.com/AnttiKotiranta/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
-## Työn aihe
+## Työn aihe:
 [Perustuu valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html) 
 
 </h2>What is Memoryz?</h2>

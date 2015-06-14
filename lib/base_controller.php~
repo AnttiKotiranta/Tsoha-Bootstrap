@@ -1,22 +1,33 @@
 <?php
 
-  class BaseController{
+class BaseController{
 
-    public static function get_user_logged_in(){
-
-    if(isset($_SESSION['user'])){
+  public static function get_user_logged_in(){
+     if(isset($_SESSION['user'])){	
       $user_id = $_SESSION['user'];
-      $user = User::find($user_id);
+      $user = Useeer::find($user_id);
       return $user;
-    }
-
-    // Käyttäjä ei ole kirjautunut sisään
-    return null;
-    }
+     }
+     return null;
+  }
 
     public static function check_logged_in(){
-      // Toteuta kirjautumisen tarkistus tähän.
-      // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
+      if(!isset($_SESSION['user'])){
+       Redirect::to('/', array('message' => 'Please log in!'));
+      }
     }
 
+//Validation rules
+  private function add_rules($v){
+	$v->rule('required', 'useeer_id');
+    $v->rule('required', 'name');
+    $v->rule('required', 'priority');
+    $v->rule('lengthMax', 'name', 40);
+    $v->rule('lengthMax','description', 100);
+    $v->rule('integer','priority');
+    $v->rule('min','priority',1);
+    $v->rule('max','priority',6);
+    $v->rule('date', 'deadline');
   }
+
+}

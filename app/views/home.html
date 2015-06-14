@@ -2,6 +2,7 @@
 {% block content %}
   <h1>Memoryz</h1>
 
+{% if not user %}
 <h2>Log in</h2>
   {% if errors %}
     <div class="alert alert-danger">
@@ -27,11 +28,12 @@
   </form>
 
 <p> Not a member yet?<a href=# class="btn btn-primary"> Register here!</a> </p>
+{%endif%}
 <br>
 <h2>What is Memoryz?</h2>
 
 <p>
-As now days people have so many things to remember, Memoryz website is here to help working class Joe, business manager Bill, stay-a-home mother Martha, student Sandy, stock-market Stud, homeless Hank, Jeff and everyone to help them remember their important matters. The idea behind Memoryz is that users can create their own table of things needed to be done, class them, rate their priority, rank them in different order and of course mark them as done.
+As now days people have so many things to remember, Memoryz website is here to help working class Joe, business manager Bill, stay-a-home mother Martha, student Sandy, stock-market Stud, homeless Hank, Jeff and for everyone to help them remember their important matters. The idea behind Memoryz is that users can create their own table of things needed to be done, class them, rate their priority, rank them in different order and of course mark them as done.
 <br>
 Memoryz will provide full chore controlling system to you anywhere and anytime. 
 </p>

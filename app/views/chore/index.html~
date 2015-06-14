@@ -4,7 +4,7 @@
   <h1>My Memoryz</h1>
 
   <h2>Add chore</h2>
-  {% if errors %}
+    {% if errors %}
     <div class="alert alert-danger">
       <ul>
         {% for error in errors %}
@@ -34,24 +34,12 @@
 	 {% for chore in chores %}
       <tr>
         <td>{{chore.name}}</td>
-	<td><div class="btn-group">
-		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-		    priority <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu" role="menu">
-		    <li>1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-			<li>5</li>
-		  </ul>
-	    </div>
-	</td>
+	<td>{{chore.priority}}</td>
 	 <td>{{chore.deadline}}</td>
         <td>{{chore.description}}</td>
         <td>< a href=#>School stuff</a></td>
-        <td><type="checkbox" aria-label="Done?"></label></td>
-        <th><a class="btn btn-default btn-sm" href="{{base_path}}/chore/{{chore.id}}">Edit</a></th>
+        <td>{{chore.done}}</td>
+        <th><a class="btn btn-default btn-sm" href="{{base_path}}/chores/{{chore.id}}/edit">Edit</a></th>
       </tr>
      {%endfor%}
     </tbody>

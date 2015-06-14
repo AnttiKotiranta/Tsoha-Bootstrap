@@ -2,7 +2,7 @@
 CREATE TABLE Useeer(
 user_id SERIAL PRIMARY KEY,
 username varchar(20) unique not null,
-password varchar(20) not Null
+pass varchar(20) not Null
 );
 
 CREATE TABLE Chore(
@@ -18,7 +18,7 @@ done boolean DEFAULT false
 CREATE TABLE Label(
 id SERIAL PRIMARY KEY,
 useeer_id INTEGER REFERENCES Useeer(user_id),
-name varchar(20) not null,
+name varchar(40) not null,
 description varchar(70)
 );
 

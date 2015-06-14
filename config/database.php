@@ -2,19 +2,11 @@
 
   class DatabaseConfig{
 
-    // Valitse käyttämäsi tietokantapalvelin - PostgreSQL (psql) tai MySQL (mysql)
     private static $use_database = 'psql';
 
-    // Muuta users-ympäristöä asettamalle oikeat arvot KAYTTAJATUNNUS-kohtaan (käyttäjätunnuksesi)
-    // ja SALASANA-kohtaan (tietokantasi pääkäyttäjän salasana)
     private static $connection_config = array(
       'psql' => array(
         'resource' => 'pgsql:'
-      ),
-      'mysql' => array(
-        'resource' => 'mysql:unix_socket=/home/KAYTTAJATUNNUS/mysql/socket;dbname=mysql',
-        'username' => 'root',
-        'password' => 'SALASANA'
       )
     );
 

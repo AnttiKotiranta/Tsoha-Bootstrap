@@ -4,21 +4,25 @@ class HomeController extends BaseController{
 
 
   public static function index(){
-      View::make('home.html');
+      $user = parent::get_user_logged_in();
+      View::make('home.html', array('user' => $user));
   }
 
   public static function login(){
     $params = $_POST;
-	Kint::dump($_POST);
     $user = Useeer::authenticate($params['username'], $params['password']);
-    Kint::dump($user);
 
     if(!$user){
-      View::make('home.html', array('error' => 'Wrong password or username!', 'username' => $params['username']));
+      View::make('home.html', array('errors' => 'Wrong username or password!', 'username' => $params['username']));
     }else{
       $_SESSION['user'] = $user->user_id;
       Redirect::to('/chores', array('message' => 'Welcome back ' . $user->username . '!'));
     }
+  }
+
+  public static function logout(){
+    $_SESSION['user'] = null;
+    Redirect::to('/', array('message' => 'Logged out.'));
   }
 
 

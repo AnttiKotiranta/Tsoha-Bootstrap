@@ -13,7 +13,7 @@
     </div>
   {% endif %}
 </div>
- <form method="post" action="{{base_path}}/tsoha/chores/:id/update">
+ <form method="post" action="{{base_path}}/chores/{{attributes.id}}/edit">
     <div class="form-group">
       <label>Name</label>
       <input name="name" class="form-control"  value="{{attributes.name}}" type="text">
@@ -36,24 +36,39 @@
       <input name="deadline" class="form-control" value="{{attributes.deadline}}" type="date">
     </div>
 
-    <div class="form-group">
-      <label>Description</label>
-      <textarea name="description" class="form-control" value="{{attributes.description}}"></textarea>
+   <div class="form-group">
+      <label>Labels</label>
+      <select class="form-control" name="labels[]" value="{{attributes.labels}}">
+	  <option>1</option>
+	  <option>2</option>
+	  <option>3</option>
+	  <option>4</option>
+	  <option>5</option>
+	  <option>6</option>
+      </select>
     </div>
 
-   <div class="checkbox">
-    <label>
-      <input name="done",  type="checkbox" value="{{attributes.done}}"> Done?
-    </label>
-  </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea name="description" class="form-control">{{attributes.description}}</textarea>
+    </div>
+
+       <div class="form-group">
+      <label>Done?</label>
+      <select class="form-control" name="done" value="{{attributes.done}}">
+	  <option>false</option>
+	  <option>true</option>
+      </select>
+    </div>
+
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Add chore</button>
+      <button type="submit" class="btn btn-primary">Update chore</button>
     </div>
   </form>
 
 <br>
-<form method="post" action="{{base_path}}/chores/{{chore.id}}/destroy" style="display: inline-block;">
+<form method="post" action="{{base_path}}/chores/{{attributes.id}}/destroy" style="display: inline-block;">
   <button type="submit" class="btn btn-danger">Delete Chore</button>
 </form>
 
