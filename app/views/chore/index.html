@@ -45,7 +45,7 @@
 	<td>{{chore.priority}}</td>
 	 <td>{{chore.deadline}}</td>
         <td>{{chore.description}}</td>
-        <td>< a href=#>School stuff</a></td>
+        <td>{% for label in chore.labels %}<a href={{base_path}}/labels/{{label.id}}/view>{{label.name}}, </a> {%endfor%}</td>
         <td>{{chore.done}}</td>
         <th><a class="btn btn-default btn-sm" href="{{base_path}}/chores/{{chore.id}}/edit">Edit</a></th>
       </tr>

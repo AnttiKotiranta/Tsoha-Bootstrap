@@ -3,7 +3,13 @@
 {% import "macros/chore_macros.html" as chore_macro %}
   <h1>My Memoryz</h1>
 
-  <h2>Add chore</h2>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Chores?</h2>
+    <p>Here you can view and add new chores with the form on your left. You can also edit and mark chores done by pressing edit button</p>
+  </div>
+  <div class="col-md-6">
+    <h2>Add chore</h2>
     {% if errors %}
     <div class="alert alert-danger">
       <ul>
@@ -14,6 +20,8 @@
     </div>
   {% endif %}
   {{chore_macro.add_chore_form()}}
+ </div>	
+</div>
 <br>
 
 <h2>My chores</h2>
@@ -37,7 +45,7 @@
 	<td>{{chore.priority}}</td>
 	 <td>{{chore.deadline}}</td>
         <td>{{chore.description}}</td>
-        <td>< a href=#>School stuff</a></td>
+        <td>{% for label in chore.labels %}<a href={{base_path}}/labels/{{label.id}}/view>{{label.id}}, </a> {%endfor%}</td>
         <td>{{chore.done}}</td>
         <th><a class="btn btn-default btn-sm" href="{{base_path}}/chores/{{chore.id}}/edit">Edit</a></th>
       </tr>

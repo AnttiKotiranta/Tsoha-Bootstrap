@@ -18,14 +18,7 @@
 	
 
    public static function sandbox(){
-       $chore = new Chore(array(
-    'name' => 'asd',
-    'priority' => '100',
-    'deadline' => '2015/8/8',
-    'description' => 'Boom, boom!'
-  ));
-  $errors = $chore->errors();
-  Kint::dump($chore);
-  Kint::dump($errors);
+ 	$s= LabelChores::find_by_chore_id(1);
+	Kint::dump($s);
     }
   }

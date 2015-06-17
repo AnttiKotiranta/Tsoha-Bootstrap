@@ -52,7 +52,10 @@ class ChoreController extends BaseController{
     
     $user = parent::get_user_logged_in();
     $params = $_POST;
+    $labels = null;
+    if(array_key_exists('labels', $params)){
     $labels = $params['labels'];
+    }
     $attributes = array(
 	'id' => $id,
 	'useeer_id' => $user->user_id,
@@ -64,14 +67,17 @@ class ChoreController extends BaseController{
         'labels' => array()
     	);
 
-   foreach($labels as $label){
-    $attributes['labels'][] = $label;
+   if($labels){
+    foreach($labels as $label){
+     $attributes['labels'][] = $label;
+    }
    }
 
    $v = new Valitron\Validator($attributes);
    self::add_rules($v);
    if ($v->validate()){
 	//if validation is ok:
+	Kint::dump($labels);
 	$chore = new Chore($attributes);
 	$chore->update();
 	Redirect::to('/chores', array('message' => 'Chore updated!'));

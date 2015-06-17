@@ -24,12 +24,28 @@ class Label extends BaseModel{
     }
     return $labels;
   }
-
+//searches labels with id and user id
   public static function find($id, $user){
     $query = DB::connection()->prepare('SELECT * FROM Label WHERE id = :id AND useeer_id = :useeer_id LIMIT 1');
     $query->execute(array('id' => $id, 'useeer_id' => $user->user_id));
     $row = $query->fetch();
 
+    if($row){
+	$label = new Label(array(
+		'id' => $row['id'],
+		'useeer_id' => $row['useeer_id'],
+		'name'  => $row['name'],
+		'description' => $row['description']
+		));
+	return $label;
+    }
+    return null;
+  }
+//searches labels with only id (used in LabelChores)
+  public static function find_id($id){
+    $query = DB::connection()->prepare('SELECT * FROM Label WHERE id = :id LIMIT 1');
+    $query->execute(array('id' => $id));
+    $row = $query->fetch();
     if($row){
 	$label = new Label(array(
 		'id' => $row['id'],

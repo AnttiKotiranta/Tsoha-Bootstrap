@@ -20,6 +20,7 @@ class Chore extends BaseModel{
     $chores = array();
     
     foreach($rows as $row){
+      $labels=LabelChores::find_chore_labels($row['id']);
       $chores[] = new Chore(array(
 		'id' => $row['id'],
 		'useeer_id' => $row['useeer_id'],
@@ -27,9 +28,11 @@ class Chore extends BaseModel{
 		'description' => $row['description'],
 		'priority' => $row['priority'],
 		'done' => $row['done'],
-		'deadline' => $row['deadline']
+		'deadline' => $row['deadline'],
+		'labels' => $labels
 		));
     }
+     Kint::dump($chores);
     return $chores;
   }
 
@@ -57,39 +60,37 @@ class Chore extends BaseModel{
     $query = DB::connection()->prepare('INSERT INTO Chore (useeer_id, name, priority, deadline, description) VALUES (:useeer_id, :name, :priority, :deadline, :description)');
     self::check_values();
     $query->execute(array('useeer_id' => $this->useeer_id, 'name' => $this->name, 'priority' => $this->priority, 'deadline' => $this->deadline, 'description' => $this->description));
-	foreach($this->labels as $label){
-	 $query = DB::connection()->prepare('INSERT INTO LabelChores (chore_id, label_id) VALUES (:chore_id, :label_id)');
-   	 $query->execute(array('chore_id' => $this->id, 'label_id' => $label->id));
-	}
   }
 
 
   public function update(){
     $query = DB::connection()->prepare('UPDATE Chore SET name = :name, priority = :priority, deadline = :deadline, description = :description, done = :done WHERE id = :id');
     $this->check_values();
-    $query->execute(array('id' => $this->id,  'name' => $this->name, 'priority' => $this->priority, 'deadline' => $this->deadline, 'description' => $this->description, 'done' => $this->done));
-    foreach($this->labels as $label){
-	 $query = DB::connection()->prepare('INSERT INTO LabelChores (chore_id, label_id) VALUES (:chore_id, :label_id)');
-   	 $query->execute(array('chore_id' => $this->id, 'label_id' => $label->id));
+    $choreLabels = LabelChores::find_by_chore_id($this->id);
+    //remove old labels
+    if($choreLabels){
+	Kint::dump($choreLabels);
+     foreach($choreLabels as $cl){
+	 $cl->destroy();
+     }
     }
- }
+    add new labels
+    if($this->labels){
+     foreach($this->labels as $label){
+	if(LabelChores::find($this->id, $label) == null){
+	//LabelChores module->
+	 LabelChores::save($this->id, $label);
+	}    
+     }
+    }
+    $query->execute(array('id' => $this->id,  'name' => $this->name, 'priority' => $this->priority, 'deadline' => $this->deadline, 'description' => $this->description, 'done' => $this->done));
+  }
 
   public function destroy(){
     $query = DB::connection()->prepare('DELETE FROM Chore WHERE id = :id');
     $query->execute(array('id' => $this->id));
   }
 
-
-//Add label to chore functions
-  public function addLabel($label){
-    $query = DB::connection()->prepare('INSERT INTO LabelChores (chore_id, label_id) VALUES (:chore_id, :label_id)');
-    $query->execute(array('chore_id' => $this->id, 'label_id' => $label->id));
-  }
-
-  public function removeLabel($label){
-    $query = DB::connection()->prepare('DELETE FROM LabelChores WHERE chore_id = :chore_id and label_id = :label_id');
-    $query->execute(array('chore_id' => $this->id, 'label_id' => $label->id));
-  }
 
 
 //checks that the param values are right
