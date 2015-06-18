@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col-md-6">
     <h2>Chores?</h2>
-    <p>Here you can view and add new chores with the form on your left. You can also edit and mark chores done by pressing edit button</p>
+    <p>Here you can view and add new chores with the form on your left. <br>You can mark chores done, add labels and edit info by pressing the edit button</p>
   </div>
   <div class="col-md-6">
     <h2>Add chore</h2>
@@ -45,8 +45,8 @@
 	<td>{{chore.priority}}</td>
 	 <td>{{chore.deadline}}</td>
         <td>{{chore.description}}</td>
-        <td>{% for label in chore.labels %}<a href={{base_path}}/labels/{{label.id}}/view>{{label.id}}, </a> {%endfor%}</td>
-        <td>{{chore.done}}</td>
+        <td>{% for label in chore.labels %}<a href={{base_path}}/labels/{{label.id}}/view>{{label.name}}, </a> {%endfor%}</td>
+        <td>{% if chore.done == true%}Yes! {%endif%}</td>
         <th><a class="btn btn-default btn-sm" href="{{base_path}}/chores/{{chore.id}}/edit">Edit</a></th>
       </tr>
      {%endfor%}

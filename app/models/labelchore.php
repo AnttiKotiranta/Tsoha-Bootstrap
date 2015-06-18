@@ -9,35 +9,33 @@ public $chore_id, $label_id;
     parent::__construct($attributes);
   }
 
-//function searches LabelChores with given id, then searches and returns labels where the label_id was found 
+//function searches LabelChores with given id, then searches and returns labels where the label_id was found from labels. Pretty clear, isn't it?
  public static function find_chore_labels($chore_id){
-   $query = DB::connection()->prepare('SELECT label.id FROM Label WHERE id IN (select Label_id from LabelChores where Chore_id = :chore_id and label_id = label.id)');
+   $query = DB::connection()->prepare('SELECT label.id FROM Label WHERE label.id IN (select labelchores.Label_id from LabelChores where labelchores.Chore_id = :chore_id)');
     $query->execute(array('chore_id'=> $chore_id));
-    $rows = $query->fetch();
+    $rows = $query->fetchAll();
     $labels = array();
 
   if($rows){
-	Kint::dump($rows);
     foreach($rows as $row){
-	$labels[] = Label::find_id($row);
+	$labels[] = Label::find_id($row['id']);
      }
-	Kint::dump($labels);
 	return $labels;
   }
     return null;
  }
 
-  public static function find_by_chore_id($chore_id){
- $query = DB::connection()->prepare('SELECT label.id FROM Label WHERE id IN (select Label_id from LabelChores where Chore_id = :chore_id and label_id = label.id)');
-    $query->execute(array($chore_id));
-    $rows = $query->fetch();
+  public static function find_by_chore_id($cid){
+ $query = DB::connection()->prepare('select * from labelchores where chore_id=:cid');
+    $query->execute(array('cid' =>$cid));
+       $rows = $query->fetchAll();
 	Kint::dump($rows);
     $labels = array();
   if($rows){
     foreach($rows as $row){
 	$labels[] = new LabelChores(array(
-		'chore_id' => $chore_id,
-		'label_id' => $row
+		'chore_id' => $row['chore_id'],
+		'label_id' => $row['label_id']
 	));
      }
     return $labels;

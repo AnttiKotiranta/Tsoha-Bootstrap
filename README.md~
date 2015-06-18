@@ -1,12 +1,12 @@
 # Memoryz
 
-* [Linkki sovellukseeni](http://ajkotira.users.cs.helsinki.fi/tsoha/)
-Username = Testi2 | Password = Testi123
+* [Link to site](http://ajkotira.users.cs.helsinki.fi/tsoha/)
+Username = Testi | Password = Testi123
 
-* [Linkki dokumentaatiooni](https://github.com/AnttiKotiranta/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
+* [Link to documentation](https://github.com/AnttiKotiranta/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe:
-[Perustuu valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html) 
+[Based on muistilista](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html) 
 
 </h2>What is Memoryz?</h2>
 As now days people have so many things to remember, Memoryz website is here to help working class Joe, business manager Bill, stay-a-home mother Martha, student Sandy, stock-market Stud, homeless Hank, Jeff and everyone to help them remember their important  matters. The idea behind Memoryz is that users can create their own table of things needed to be done, class them, rate their priority, rank them in different order and of course mark them as done. 
