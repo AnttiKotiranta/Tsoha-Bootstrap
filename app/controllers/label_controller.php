@@ -37,7 +37,8 @@ class LabelController extends BaseController{
 			 $errors[]=$e;
 		 }
      }
-	View::make('/label/index.html', array('errors' => $errors, 'name' => $params['name'], 'description'=>$params['description']));
+	$labels = Label::all($user->user_id);
+	View::make('/label/index.html', array('errors' => $errors,'labels' =>$labels, 'attributes' => $attributes));
     }
   }
 
@@ -65,7 +66,7 @@ class LabelController extends BaseController{
 			 $errors[]=$e;
 		 }
      }
-	 View::make('/label/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+	 View::make('/label/view.html', array('errors' => $errors, 'attributes' => $attributes));
    }
  }
 

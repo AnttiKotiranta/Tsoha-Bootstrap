@@ -70,7 +70,7 @@ class Chore extends BaseModel{
     $query->execute(array('id' => $this->id,  'name' => $this->name, 'priority' => $this->priority, 'deadline' => $this->deadline, 'description' => $this->description, 'done' => $this->done));
     $choreLabels = LabelChores::find_by_chore_id($this->id);
     //remove old labels
-	Kint::dump($choreLabels);
+	
     if($choreLabels){
      foreach($choreLabels as $cl){
 	 $cl->destroy();

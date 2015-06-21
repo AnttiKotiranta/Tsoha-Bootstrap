@@ -35,7 +35,8 @@ class ChoreController extends BaseController{
 			 $errors[]=$e;
 	  }
         }
-	View::make('/chore/index.html', array('errors' => $errors, 'attributes' => $attributes));
+	$chores = Chore::all($user->user_id);
+	View::make('/chore/index.html', array('errors' => $errors, 'attributes' => $attributes, 'chores' =>$chores));
     }
   }
 
@@ -77,7 +78,6 @@ class ChoreController extends BaseController{
    self::add_rules($v);
    if ($v->validate()){
 	//if validation is ok:
-	Kint::dump($labels);
 	$chore = new Chore($attributes);
 	$chore->update();
 	Redirect::to('/chores', array('message' => 'Chore updated!'));
@@ -88,7 +88,8 @@ class ChoreController extends BaseController{
 			 $errors[]=$e;
 		 }
      }
-	 View::make('/chore/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+	 $allLabels = Label::all($user->user_id);
+	 View::make('/chore/edit.html', array('errors' => $errors, 'attributes' => $attributes, 'labels' => $allLabels));
    }
  }
 

@@ -8,7 +8,6 @@
 
     <div class="form-group">
       <label>Priority</label>
-      <input name="priority" class="form-control" value="{{attributes.priority}}" >
       <select class="form-control" name="priority" value="{{attributes.priority}}">
 	  <option>1</option>
 	  <option>2</option>

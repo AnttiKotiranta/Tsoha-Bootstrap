@@ -20,7 +20,21 @@
       </ul>
     </div>
   {% endif %}
- {{label_macro.add_label_form()}}
+ <form method="post" action="{{base_path}}/labels/new">
+    <div class="form-group">
+      <label>Name</label>
+      <input name="name" class="form-control"  value="{{attributes.name}}" type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea name="description" class="form-control">{{attributes.description}}</textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add label</button>
+    </div>
+  </form>
  </div>
 </div>
 
@@ -30,7 +44,6 @@
       <tr>
         <th>Label</th>
         <th>Description</th>
-	<th>Chores</th>
 	<th></th>
       </tr>
     </thead>
@@ -40,7 +53,6 @@
       <tr>
         <td><a href="{{base_path}}/labels/{{label.id}}/view">{{label.name}}</a></td>
         <td>{{label.description}}</td>
-        <td>chores</a></td>
         <th><a class="btn btn-default btn-sm" href="{{base_path}}/labels/{{label.id}}/view">View</a></th>
       </tr>
      {%endfor%}

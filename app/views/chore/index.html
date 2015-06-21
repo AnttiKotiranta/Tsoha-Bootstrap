@@ -19,7 +19,38 @@
       </ul>
     </div>
   {% endif %}
-  {{chore_macro.add_chore_form()}}
+ <form method="post" action="{{base_path}}/chores/new">
+    <div class="form-group">
+      <label>Name</label>
+      <input name="name" class="form-control"  value="{{attributes.name}}" type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Priority</label>
+      <select class="form-control" name="priority" value="{{attributes.priority}}">
+	  <option>1</option>
+	  <option>2</option>
+	  <option>3</option>
+	  <option>4</option>
+	  <option>5</option>
+	  <option>6</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Deadline</label>
+      <input name="deadline" class="form-control" value="{{attributes.deadline}}" type="date">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea name="description" class="form-control">{{attributes.description}}</textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add chore</button>
+    </div>
+  </form>
  </div>	
 </div>
 <br>

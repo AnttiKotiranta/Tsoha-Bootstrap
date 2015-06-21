@@ -20,7 +20,21 @@
       </ul>
     </div>
   {% endif %}
- {{label_macro.add_label_form()}}
+ <form method="post" action="{{base_path}}/labels/new">
+    <div class="form-group">
+      <label>Name</label>
+      <input name="name" class="form-control"  value="{{attributes.name}}" type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea name="description" class="form-control">{{attributes.description}}</textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add label</button>
+    </div>
+  </form>
  </div>
 </div>
 
